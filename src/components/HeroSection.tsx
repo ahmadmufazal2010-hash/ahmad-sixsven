@@ -49,8 +49,9 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
           >
-            Saya membangun aplikasi web yang indah dan fungsional, 
-            serta membagikan pengetahuan melalui konten yang inspiratif.
+            Saya seorang murid dari MAN 1 Banda Aceh yang saat ini
+            sedang mempelajari dunia pemrograman, dan juga
+            saya sedang menempun pendidikan di kelas X-11.
           </motion.p>
 
           <motion.div
@@ -89,14 +90,15 @@ export default function HeroSection() {
             className="flex items-center justify-center gap-6"
           >
             {[
-              { icon: Github, href: '#', label: 'GitHub' },
-              { icon: Linkedin, href: '#', label: 'LinkedIn' },
-              { icon: Youtube, href: '#', label: 'YouTube' },
-              { icon: Instagram, href: '#', label: 'Instagram' },
+              { icon: Github, href: 'https://github.com/ahmadmufazal2010-hash/ahmad-sixsven.git', label: 'GitHub' },
+              // { icon: Linkedin, href: '#', label: 'LinkedIn' },
+              { icon: Youtube, href: 'https://www.youtube.com/', label: 'YouTube' },
+              // { icon: Instagram, href: '#', label: 'Instagram' },
             ].map((social) => (
               <motion.a
                 key={social.label}
                 href={social.href}
+                target="_blank"
                 className="p-3 rounded-full glass hover:shadow-glow transition-all duration-300"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
