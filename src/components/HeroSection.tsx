@@ -15,22 +15,46 @@ export default function HeroSection() {
       className="
         relative min-h-screen flex items-center justify-center overflow-hidden
         bg-gradient-to-br from-white via-cyan-50 to-blue-100
-        dark:from-black dark:via-gray-900 dark:to-black
+        dark:from-[#020617] dark:via-[#0f172a] dark:to-[#020617]
         text-gray-900 dark:text-white
       "
     >
-      {/* 🌈 Glow Background */}
-      <div className="absolute inset-0 -z-10">
+      {/* 🌈 GLOW + AURORA FIX */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+
+        {/* Cyan Glow */}
         <motion.div
-          animate={{ y: [0, -30, 0] }}
+          animate={{ y: [0, -40, 0] }}
           transition={{ repeat: Infinity, duration: 10 }}
-          className="absolute top-[-150px] left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-cyan-400/30 dark:bg-cyan-700/20 blur-[120px] rounded-full"
+          className="
+            absolute top-[-150px] left-1/2 -translate-x-1/2
+            w-[700px] h-[700px]
+            bg-cyan-400/40 dark:bg-cyan-500/30
+            blur-[140px] rounded-full
+            mix-blend-lighten dark:mix-blend-screen
+          "
         />
+
+        {/* Blue Glow */}
         <motion.div
-          animate={{ y: [0, 40, 0] }}
+          animate={{ y: [0, 50, 0] }}
           transition={{ repeat: Infinity, duration: 12 }}
-          className="absolute bottom-[-150px] right-1/2 translate-x-1/2 w-[600px] h-[600px] bg-blue-400/30 dark:bg-blue-700/20 blur-[120px] rounded-full"
+          className="
+            absolute bottom-[-150px] right-1/2 translate-x-1/2
+            w-[600px] h-[600px]
+            bg-blue-400/40 dark:bg-blue-500/30
+            blur-[140px] rounded-full
+            mix-blend-lighten dark:mix-blend-screen
+          "
         />
+
+        {/* Extra subtle gradient layer */}
+        <div className="
+          absolute inset-0
+          bg-gradient-to-tr
+          from-cyan-500/10 via-transparent to-blue-500/10
+          dark:from-cyan-500/20 dark:to-blue-500/20
+        " />
       </div>
 
       {/* 🌌 3D */}
@@ -68,18 +92,17 @@ export default function HeroSection() {
             animate={{ opacity: 1, x: 0 }}
             className="max-w-xl text-center md:text-left"
           >
-            {/* Badge */}
             <span className="
               inline-block mb-4 px-4 py-2 text-sm rounded-full
-              bg-cyan-500/10 text-black-500
+              bg-cyan-500/10 text-black
               border border-cyan-400/30
+              dark:text-white
             ">
               👋 Welcome to My Portfolio
             </span>
 
-            {/* Title */}
             <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
-              <span className="block text-black-500">Hi I'M</span>
+              <span className="block text-black dark:text-white">Hi I'M</span>
               <span className="
                 bg-gradient-to-r from-cyan-400 via-cyan-500 to-blue-500
                 bg-clip-text text-transparent
@@ -88,13 +111,11 @@ export default function HeroSection() {
               </span>
             </h1>
 
-            {/* Desc */}
             <p className="text-gray-600 dark:text-gray-300 mb-6">
               Saya seorang pelajar yang sedang fokus mempelajari dunia
               pemrograman dan membangun website modern yang interaktif 🚀
             </p>
 
-            {/* Button */}
             <div className="flex flex-col sm:flex-row gap-4 mb-6 md:justify-start justify-center">
               <Button
                 onClick={() => scrollTo('#projects')}
@@ -112,9 +133,7 @@ export default function HeroSection() {
               </Button>
             </div>
 
-            {/* 🌐 SOCIAL (SUDAH ADA LINK) */}
             <div className="flex gap-4 md:justify-start justify-center">
-              
               <a
                 href="https://github.com/ahmadmufazal2010-hash/ahmad-sixsven.git"
                 target="_blank"
@@ -132,7 +151,6 @@ export default function HeroSection() {
               >
                 <Youtube className="text-cyan-500" />
               </a>
-
             </div>
           </motion.div>
         </div>
