@@ -1,154 +1,224 @@
+import { useCallback, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Play } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import useEmblaCarousel from 'embla-carousel-react';
 
-const projects = [
+const movies = [
   {
-    title: 'E-Commerce Platform',
-    description: 'Platform e-commerce modern dengan fitur lengkap termasuk payment gateway, inventory management, dan analytics dashboard.',
-    tags: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-    image: '🛒',
-    color: 'from-blue-500/20 to-cyan-500/20',
-    github: '#',
-    demo: '#',
+    title: '🔥 Fast & Furious',
+    description: 'Balapan, keluarga, dan aksi tanpa batas.',
+    image: '/fast.webp',
+    color: 'from-yellow-400 via-orange-500 to-red-500',
   },
   {
-    title: 'Learning Management System',
-    description: 'Platform pembelajaran online dengan video streaming, quiz interaktif, dan progress tracking.',
-    tags: ['Next.js', 'TypeScript', 'MongoDB', 'WebRTC'],
-    image: '📚',
-    color: 'from-purple-500/20 to-pink-500/20',
-    github: '#',
-    demo: '#',
+    title: '🦇 The Dark Knight',
+    description: 'Batman vs Joker dengan strategi gila.',
+    image: '/batman.webp',
+    color: 'from-gray-700 via-gray-900 to-black',
   },
   {
-    title: 'Social Media Dashboard',
-    description: 'Dashboard analytics untuk social media dengan real-time data visualization dan reporting.',
-    tags: ['React', 'D3.js', 'Firebase', 'Tailwind'],
-    image: '📊',
-    color: 'from-orange-500/20 to-red-500/20',
-    github: '#',
-    demo: '#',
+    title: '🧠 Inception',
+    description: 'Masuk ke dalam mimpi dan realita.',
+    image: '/inception.webp',
+    color: 'from-cyan-400 via-blue-500 to-indigo-600',
   },
   {
-    title: 'AI Content Generator',
-    description: 'Tool untuk generate konten menggunakan AI dengan integrasi berbagai model language.',
-    tags: ['Python', 'FastAPI', 'OpenAI', 'React'],
-    image: '🤖',
-    color: 'from-green-500/20 to-teal-500/20',
-    github: '#',
-    demo: '#',
+    title: '🚀 Interstellar',
+    description: 'Eksplorasi luar angkasa penuh emosi.',
+    image: '/interstellar.webp',
+    color: 'from-indigo-400 via-purple-500 to-black',
   },
   {
-    title: 'Video Editing Tutorial',
-    description: 'Seri tutorial video editing dengan 100+ episode dan 10k+ subscribers.',
-    tags: ['Premiere Pro', 'After Effects', 'YouTube'],
-    image: '🎬',
-    color: 'from-red-500/20 to-orange-500/20',
-    isContent: true,
-    youtube: '#',
+    title: '🕷️ Spider-Man',
+    description: 'Pahlawan muda penuh aksi.',
+    image: '/spiderman.webp',
+    color: 'from-red-500 via-pink-500 to-purple-500',
   },
   {
-    title: 'Coding Tips & Tricks',
-    description: 'Konten tips programming dan best practices untuk developer Indonesia.',
-    tags: ['Instagram', 'TikTok', 'YouTube Shorts'],
-    image: '💡',
-    color: 'from-cyan-500/20 to-blue-500/20',
-    isContent: true,
-    youtube: '#',
+    title: '💣 John Wick',
+    description: 'Aksi brutal dengan gaya elegan.',
+    image: '/jhonwik.webp',
+    color: 'from-emerald-400 via-teal-500 to-cyan-500',
   },
 ];
 
 export default function ProjectsSection() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: 'center',
+  });
+
+  const scrollPrev = useCallback(() => {
+    emblaApi?.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    emblaApi?.scrollNext();
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const interval = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [emblaApi]);
+
   return (
-    <section id="projects" className="py-20 md:py-32 bg-muted/30">
+    <section
+      id="projects"
+      className="
+        relative py-20 overflow-hidden
+        text-gray-900 dark:text-white
+
+        bg-gradient-to-br from-white via-pink-50 to-yellow-100
+        dark:from-[#050816] dark:via-[#0b1020] dark:to-black
+      "
+    >
+
+      {/* 🌌 BACKGROUND GLOW FIXED */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+
+        {/* 🌞 LIGHT MODE */}
+        <motion.div
+          animate={{ x: [0, 80, -80, 0], y: [0, 40, -40, 0] }}
+          transition={{ duration: 18, repeat: Infinity }}
+          className="
+            absolute w-[600px] h-[600px]
+            bg-pink-400/40 blur-[160px] rounded-full
+            top-[-200px] left-[-200px]
+            dark:hidden
+          "
+        />
+
+        <motion.div
+          animate={{ x: [0, -90, 90, 0] }}
+          transition={{ duration: 22, repeat: Infinity }}
+          className="
+            absolute w-[600px] h-[600px]
+            bg-yellow-300/40 blur-[160px] rounded-full
+            bottom-[-200px] right-[-200px]
+            dark:hidden
+          "
+        />
+
+        {/* 🌑 DARK MODE */}
+        <motion.div
+          animate={{ y: [0, -60, 0] }}
+          transition={{ duration: 20, repeat: Infinity }}
+          className="
+            absolute w-[700px] h-[700px]
+            bg-cyan-500/30 blur-[180px] rounded-full
+            top-[-250px] left-[-250px]
+            hidden dark:block
+          "
+        />
+
+        <motion.div
+          animate={{ y: [0, 60, 0] }}
+          transition={{ duration: 25, repeat: Infinity }}
+          className="
+            absolute w-[700px] h-[700px]
+            bg-purple-500/30 blur-[180px] rounded-full
+            bottom-[-250px] right-[-250px]
+            hidden dark:block
+          "
+        />
+
+        {/* 🌫️ NOISE */}
+        <div className="
+          absolute inset-0 opacity-[0.05]
+          bg-[url('https://grainy-gradients.vercel.app/noise.svg')]
+        " />
+      </div>
+
+      {/* CONTENT */}
       <div className="container mx-auto px-4">
+
+        {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-medium mb-2 block">Portfolio</span>
-          <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
-            Projects &amp; Karya
+          <h2 className="text-3xl md:text-5xl font-bold">
+            🎬 Film Favorit
           </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
+          <p className="text-gray-600 dark:text-gray-400 mt-2">
+            Koleksi film paling keren & wajib ditonton 🔥
+          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group"
-            >
-              <div className="h-full p-6 glass rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2">
-                <div className={`aspect-video rounded-xl mb-4 flex items-center justify-center bg-gradient-to-br ${project.color}`}>
-                  <span className="text-6xl">{project.image}</span>
-                </div>
-                
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    {project.isContent && (
-                      <span className="px-2 py-0.5 text-xs rounded-full bg-primary/10 text-primary font-medium">
-                        Content
-                      </span>
-                    )}
-                    <h3 className="font-display text-lg font-bold group-hover:text-primary transition-colors">
-                      {project.title}
+        {/* CAROUSEL */}
+        <div className="relative max-w-6xl mx-auto">
+          <div ref={emblaRef} className="overflow-hidden">
+            <div className="flex gap-6">
+
+              {movies.map((movie, index) => (
+                <div
+                  key={index}
+                  className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.33%]"
+                >
+                  <div className="
+                    p-5 rounded-2xl
+                    bg-white/70 dark:bg-white/5
+                    backdrop-blur-xl
+                    border border-white/40 dark:border-white/10
+                    hover:-translate-y-3 transition-all duration-500
+                  ">
+
+                    <div className="relative group">
+
+                      <div className={`absolute inset-0 rounded-xl bg-gradient-to-r ${movie.color}
+                        blur-2xl opacity-40 group-hover:opacity-100 
+                        scale-90 group-hover:scale-110 transition`}
+                      />
+
+                      <div className={`relative p-[3px] rounded-xl bg-gradient-to-r ${movie.color}`}>
+                        <div className="aspect-[2/3] overflow-hidden rounded-xl bg-black">
+                          <img
+                            src={movie.image}
+                            className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                          />
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <h3 className="font-bold text-lg mt-4">
+                      {movie.title}
                     </h3>
-                  </div>
-                  
-                  <p className="text-sm text-muted-foreground line-clamp-2">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 text-xs rounded-md bg-secondary text-secondary-foreground"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <div className="flex gap-2 pt-2">
-                    {project.github && (
-                      <Button variant="outline" size="sm" className="rounded-full" asChild>
-                        <a href={project.github}>
-                          <Github className="h-4 w-4 mr-1" />
-                          Code
-                        </a>
-                      </Button>
-                    )}
-                    {project.demo && (
-                      <Button size="sm" className="rounded-full" asChild>
-                        <a href={project.demo}>
-                          <ExternalLink className="h-4 w-4 mr-1" />
-                          Demo
-                        </a>
-                      </Button>
-                    )}
-                    {project.youtube && (
-                      <Button size="sm" className="rounded-full" asChild>
-                        <a href={project.youtube}>
-                          <Play className="h-4 w-4 mr-1" />
-                          Watch
-                        </a>
-                      </Button>
-                    )}
+
+                    <p className="text-sm text-gray-700 dark:text-gray-400 mt-2">
+                      {movie.description}
+                    </p>
+
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              ))}
+
+            </div>
+          </div>
+
+          {/* BUTTONS */}
+          <Button
+            onClick={scrollPrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10
+            bg-white/70 dark:bg-white/10 backdrop-blur-md"
+          >
+            <ChevronLeft />
+          </Button>
+
+          <Button
+            onClick={scrollNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10
+            bg-white/70 dark:bg-white/10 backdrop-blur-md"
+          >
+            <ChevronRight />
+          </Button>
+
         </div>
       </div>
     </section>

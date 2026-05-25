@@ -14,112 +14,114 @@ export default function HeroSection() {
       id="home"
       className="
         relative min-h-screen flex items-center justify-center overflow-hidden
-        bg-gradient-to-br from-white via-cyan-50 to-blue-100
-        dark:from-[#020617] dark:via-[#0f172a] dark:to-[#020617]
-        text-gray-900 dark:text-white
+        bg-gradient-to-br 
+        from-slate-50 via-slate-100 to-slate-200
+        dark:from-[#020617] dark:via-[#0b1220] dark:to-[#020617]
+        text-slate-900 dark:text-white
       "
     >
-      {/* 🌈 GLOW + AURORA FIX */}
+      {/* BACKGROUND */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
 
-        {/* Cyan Glow */}
         <motion.div
           animate={{ y: [0, -40, 0] }}
-          transition={{ repeat: Infinity, duration: 10 }}
-          className="
-            absolute top-[-150px] left-1/2 -translate-x-1/2
-            w-[700px] h-[700px]
-            bg-cyan-400/40 dark:bg-cyan-500/30
-            blur-[140px] rounded-full
-            mix-blend-lighten dark:mix-blend-screen
-          "
-        />
-
-        {/* Blue Glow */}
-        <motion.div
-          animate={{ y: [0, 50, 0] }}
           transition={{ repeat: Infinity, duration: 12 }}
           className="
-            absolute bottom-[-150px] right-1/2 translate-x-1/2
-            w-[600px] h-[600px]
-            bg-blue-400/40 dark:bg-blue-500/30
-            blur-[140px] rounded-full
-            mix-blend-lighten dark:mix-blend-screen
+            absolute top-[-180px] left-1/2 -translate-x-1/2
+            w-[750px] h-[750px]
+            bg-emerald-300/20 dark:bg-emerald-500/10
+            blur-[150px] rounded-full
           "
         />
 
-        {/* Extra subtle gradient layer */}
-        <div className="
-          absolute inset-0
-          bg-gradient-to-tr
-          from-cyan-500/10 via-transparent to-blue-500/10
-          dark:from-cyan-500/20 dark:to-blue-500/20
-        " />
+        <motion.div
+          animate={{ y: [0, 50, 0] }}
+          transition={{ repeat: Infinity, duration: 14 }}
+          className="
+            absolute bottom-[-180px] right-1/2 translate-x-1/2
+            w-[650px] h-[650px]
+            bg-indigo-300/20 dark:bg-indigo-500/10
+            blur-[150px] rounded-full
+          "
+        />
       </div>
 
-      {/* 🌌 3D */}
       <ThreeScene />
 
-      {/* 💻 CONTENT */}
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-12">
+      {/* CENTER FIX */}
+      <div className="container mx-auto px-6 relative z-10 flex justify-center">
+        
+        <div className="flex flex-col md:flex-row items-center justify-center gap-12 text-center md:text-left">
 
-          {/* 🧑 FOTO */}
+          {/* FOTO */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
-            className="relative flex-shrink-0"
+            className="relative"
           >
-            <div className="absolute inset-0 rounded-[30px] bg-gradient-to-br from-cyan-400 to-blue-500 blur-2xl opacity-40" />
+            <div className="
+              absolute inset-0 rounded-[30px]
+              bg-gradient-to-br from-emerald-200/40 to-indigo-300/40
+              dark:from-emerald-500/10 dark:to-indigo-500/10
+              blur-2xl
+            " />
 
             <img
               src="/fotoahmad1.jpg"
               alt="profile"
               className="
                 relative
-                w-[220px] h-[320px] md:w-[260px] md:h-[360px]
-                object-cover
-                rounded-[25px]
-                border border-white/30
-                shadow-xl
+                w-[230px] h-[340px] md:w-[270px] md:h-[380px]
+                object-cover rounded-[24px]
+                border border-white/20 dark:border-white/10
+                shadow-lg
               "
             />
           </motion.div>
 
-          {/* ✍️ TEXT */}
+          {/* TEXT */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            className="max-w-xl text-center md:text-left"
+            className="max-w-xl flex flex-col items-center md:items-start"
           >
             <span className="
               inline-block mb-4 px-4 py-2 text-sm rounded-full
-              bg-cyan-500/10 text-black
-              border border-cyan-400/30
-              dark:text-white
+              bg-white/60 dark:bg-white/5
+              border border-slate-200 dark:border-white/10
+              text-slate-700 dark:text-slate-300
+              backdrop-blur-md
             ">
               👋 Welcome to My Portfolio
             </span>
 
             <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
-              <span className="block text-black dark:text-white">Hi I'M</span>
+              <span className="block text-slate-900 dark:text-white">
+                Hi I'M
+              </span>
+
               <span className="
-                bg-gradient-to-r from-cyan-400 via-cyan-500 to-blue-500
+                bg-gradient-to-r from-emerald-500 via-teal-500 to-indigo-500
                 bg-clip-text text-transparent
               ">
                 Ahmad Mufazal💫
               </span>
             </h1>
 
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
-              Saya seorang pelajar yang sedang fokus mempelajari dunia
-              pemrograman dan membangun website modern yang interaktif 🚀
+            <p className="text-slate-600 dark:text-slate-300 mb-6">
+              Saya seorang pelajar yang sedang belajar membangun website modern,
+              UI design, dan eksplorasi teknologi web 🚀
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-6 md:justify-start justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <Button
                 onClick={() => scrollTo('#projects')}
-                className="rounded-full px-6 bg-gradient-to-r from-cyan-400 to-blue-500 hover:scale-105 transition"
+                className="
+                  rounded-full px-6
+                  bg-slate-900 dark:bg-white
+                  text-white dark:text-black
+                  hover:scale-105 transition
+                "
               >
                 🚀 Lihat Project
               </Button>
@@ -127,43 +129,56 @@ export default function HeroSection() {
               <Button
                 variant="outline"
                 onClick={() => scrollTo('#contact')}
-                className="rounded-full px-6 border-cyan-400/30 hover:bg-cyan-400/10"
+                className="
+                  rounded-full px-6
+                  border-slate-300 dark:border-white/20
+                  hover:bg-slate-100 dark:hover:bg-white/10
+                "
               >
                 📩 Hubungi Saya
               </Button>
             </div>
 
-            <div className="flex gap-4 md:justify-start justify-center">
+            <div className="flex gap-4">
               <a
-                href="https://github.com/ahmadmufazal2010-hash/ahmad-sixsven.git"
+                href="https://github.com/"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full border border-cyan-400/30 hover:bg-cyan-400/10 hover:scale-110 transition"
+                className="
+                  p-3 rounded-full
+                  border border-slate-300 dark:border-white/10
+                  bg-white/60 dark:bg-white/5
+                  hover:scale-110 transition
+                "
               >
-                <Github className="text-cyan-500" />
+                <Github className="text-slate-800 dark:text-white" />
               </a>
 
               <a
-                href="https://www.youtube.com/"
+                href="https://youtube.com/"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full border border-cyan-400/30 hover:bg-cyan-400/10 hover:scale-110 transition"
+                className="
+                  p-3 rounded-full
+                  border border-slate-300 dark:border-white/10
+                  bg-white/60 dark:bg-white/5
+                  hover:scale-110 transition
+                "
               >
-                <Youtube className="text-cyan-500" />
+                <Youtube className="text-slate-800 dark:text-white" />
               </a>
             </div>
           </motion.div>
+
         </div>
       </div>
 
-      {/* ⬇️ Scroll */}
+      {/* SCROLL */}
       <motion.div
         onClick={() => scrollTo('#about')}
         className="absolute bottom-8 cursor-pointer"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 1.5 }}
       >
-        <ArrowDown className="w-6 h-6 text-cyan-500" />
+        <ArrowDown className="w-6 h-6 text-slate-500 dark:text-white/70" />
       </motion.div>
     </section>
   );
